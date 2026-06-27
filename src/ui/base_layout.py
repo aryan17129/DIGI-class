@@ -1,92 +1,74 @@
 import streamlit as st
 
-def style_background_home():
+def style_background_home(theme="Green"):
 
-    st.markdown("""
+    themes = {
+        "Green": {
+            "bg": "linear-gradient(135deg,#0B3D2E,#14532D,#166534,#22C55E)",
+            "button": "#22C55E",
+        },
+        "Blue": {
+            "bg": "linear-gradient(135deg,#1E3A8A,#2563EB,#3B82F6,#60A5FA)",
+            "button": "#2563EB",
+        },
+        "Purple": {
+            "bg": "linear-gradient(135deg,#4C1D95,#6D28D9,#7C3AED,#A855F7)",
+            "button": "#7C3AED",
+        },
+        "Dark": {
+            "bg": "linear-gradient(135deg,#111827,#1F2937,#374151,#4B5563)",
+            "button": "#374151",
+        },
+        "Orange": {
+            "bg": "linear-gradient(135deg,#7C2D12,#C2410C,#EA580C,#FB923C)",
+            "button": "#EA580C",
+        },
+    }
+
+    current = themes[theme]
+
+    st.markdown(
+        f"""
         <style>
 
-                .stApp {
-                    background: #5865F2 !important;
-                }
+        [data-testid="stAppViewContainer"] {{
+            background: {current['bg']};
+            background-attachment: fixed;
+        }}
 
-                .stApp div[data-testid="stColumn"]{
-                    background-color:#E0E3FF !important;
-                    padding:2.5rem !important;
-                    border-radius: 5rem !important;
-                    }
-        </style>  
+        [data-testid="stHeader"] {{
+            background: transparent;
+        }}
 
-                """
-            ,unsafe_allow_html=True)
-    
+        div[data-testid="stColumn"] {{
+            background: rgba(255,255,255,.12);
+            backdrop-filter: blur(15px);
+            border-radius:20px;
+            padding:2rem;
+            border:1px solid rgba(255,255,255,.2);
+        }}
 
-    
+        .stButton > button {{
+            width:100%;
+            border-radius:15px;
+            height:55px;
+            background:{current['button']} !important;
+            color:white !important;
+            border:none;
+            font-weight:600;
+        }}
 
+        .stButton > button:hover {{
+            transform:scale(1.05);
+        }}
+
+        h1,h2,h3,h4,p {{
+            color:white;
+        }}
+
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 def style_base_layout():
-# asdasd
-    st.markdown("""
-        
-                
-         /* Hide Top Bar of streamlit */
-                
-            #MainMenu, footer, header {
-                visibility: hidden;
-            }
-                
-            .block-container {
-                padding-top:1.5rem !important;    
-            }
-
-            h1 {
-                font-family: 'Climate Crisis', sans-serif !important;
-                font-size: 3.5rem !important;
-                line-height:1.1 1important;
-                margin-bottom:0rem !important;
-            }
-                
-
-            h2 {
-                font-family: 'Climate Crisis', sans-serif !important;
-                font-size: 2rem !important;
-                line-height:0.9 !important;
-                margin-bottom:0rem !important;
-            }
-                
-            h3, h4, p {
-                font-family: 'Outfit', sans-serif;    
-            }
-                
-
-            button{
-                border-radius: 1.5rem !important;
-                background-color: #5865F2 !important;
-                color: white !important;
-                padding: 10px 20px !important;
-                border: none !important;
-                transition: transform 0.25s ease-in-out !important;
-                }
-
-            button[kind="secondary"]{
-                border-radius: 1.5rem !important;
-                background-color: #EB459E !important;
-                color: white !important;
-                padding: 10px 20px !important;
-                border: none !important;
-                transition: transform 0.25s ease-in-out !important;
-                }
-
-            button[kind="tertiary"]{
-                border-radius: 1.5rem !important;
-                background-color: black !important;
-                color: white !important;
-                padding: 10px 20px !important;
-                border: none !important;
-                transition: transform 0.25s ease-in-out !important;
-                }
-
-            button:hover{
-                transform :scale(1.05)}
-        </style>  
-
-                """
-            ,unsafe_allow_html=True)
+    pass
